@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wuthering Waves — тёмно-синяя тема с пастельными переходами</title>
+    <style>
+        /* ========== СИНЯЯ ПАЛИТРА ========== */
+        /* тёмный фон: глубокий индиго, переход к светлому синему */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background: linear-gradient(145deg, #0a1a2f 0%, #1e3f62 100%);
+            color: #e3f0ff;               /* очень светлый синий для текста */
+            min-height: 100vh;
+            transition: background 0.3s ease;
+        }
+
+        /* все семантические блоки получают единый стиль с синими оттенками */
+        header, nav, main, section, article, aside, footer, figure, details, hgroup {
+            margin: 12px 0;
+            padding: 16px 20px;
+            border-radius: 18px;           /* мягкие скругления */
+            background: rgba(20, 45, 80, 0.65);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(170, 210, 255, 0.25); /* пастельная обводка */
+            box-shadow: 0 8px 20px rgba(0, 5, 15, 0.6);
+            transition: all 0.2s ease;
+        }
+
+        /* отдельные уточнения для прозрачности */
+        main {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            backdrop-filter: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 0;
+        }
+
+        /* основные колонки — более плотный синий */
+        main > section {
+            flex: 2 1 60%;
+            background: #173a57;            /* насыщенный тёмно-синий */
+            border-left: 4px solid #7bb0ff;  /* пастельно-синий акцент */
+        }
+
+        aside {
+            flex: 1 1 30%;
+            background: #1d4468;             /* чуть светлее основного */
+            border-left: 4px solid #9ac4ff;
+            align-self: start;
+        }
+
+        /* хедер и футер — глубокий синий с градиентной обводкой */
+        header {
+            background: #102b41;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, #5b9eff, #b8d6ff) 1;
+        }
+
+        footer {
+            background: #102b41;
+            text-align: center;
+            font-size: 0.95em;
+            border-top: 2px solid #5983b3;
+        }
+
+        /* навигация */
+        nav {
+            background: #0d314a;
+            border-color: #7bb0ff;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            color: #c6deff;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 30px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background: #2c577e;
+            color: #ffffff;
+        }
+
+        /* статьи (новости) */
+        article {
+            background: #1f4465;            /* единый синий тон */
+            border-left: 6px solid #8ab9ff;
+            margin-top: 15px;
+        }
+
+        /* изображения / видео-блоки */
+        figure {
+            background: #0f304b;
+            display: inline-block;
+            padding: 12px;
+            border: 1px solid #548dcc;
+        }
+
+        figcaption {
+            color: #bad2ff;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        /* детальная информация (спойлеры) */
+        details {
+            background: #1a3d5e;
+            border-color: #5987c0;
+            padding: 12px 18px;
+        }
+
+        summary {
+            font-weight: bold;
+            color: #d1e5ff;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        summary:hover {
+            color: #ffffff;
+        }
+
+        /* группа заголовков */
+        hgroup {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        hgroup h1 {
+            margin: 0 0 5px 0;
+            color: #c6deff;                /* пастельный синий */
+            font-size: 2.2em;
+            text-shadow: 0 2px 5px #001122;
+        }
+
+        hgroup h2 {
+            margin: 0;
+            color: #9fc5ff;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        /* выделенный текст */
+        mark {
+            background: rgba(160, 200, 255, 0.25);
+            color: #e0f0ff;
+            padding: 2px 6px;
+            border-radius: 12px;
+            border: 1px solid #7bb0ff;
+            font-weight: 500;
+        }
+
+        /* даты и время */
+        time {
+            color: #b2d9ff;
+            font-weight: 600;
+            background: rgba(30, 70, 120, 0.5);
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        /* ссылки */
+        a {
+            color: #b8d6ff;
+            text-decoration: underline 1px dotted;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+
+        a:visited {
+            color: #c6b0ff;                 /* лавандовый оттенк для посещённого */
+        }
+
+        a:hover {
+            color: #ffffff;
+            text-decoration: underline solid;
+        }
+
+        /* видео для единообразия */
+        video {
+            border-radius: 14px;
+            border: 2px solid #3b78b0;
+            box-shadow: 0 0 15px #1e4970;
+            max-width: 100%;
+        }
+
+        /* небольшой отступ для списков */
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        /* пастельные акценты при наведении на блоки */
+        section:hover, article:hover, aside:hover, details:hover {
+            border-color: #b8dcff;
+            background: rgba(35, 70, 110, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER + HGROUP (группировка заголовков) -->
+    <header>
+        <hgroup>
+            <h1>Wuthering Waves</h1>
+            <h2>Информационный портал о мире и геймплее</h2>
+        </hgroup>
+        <p>Всё о новинках, персонажах и событиях игры</p>
+    </header>
+
+    <!-- NAV (навигация по разделам) -->
+    <nav>
+        <ul>
+            <li><a href="#about">Об игре (+ Представление Резонатора)</a></li>
+            <li><a href="#news">Новости</a></li>
+            <li><a href="#characters">Персонажи</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN (основное содержимое) + ASIDE (боковая панель) внутри общего потока -->
+    <main>
+        <!-- Основная колонка с секциями -->
+        <section id="about">
+            <h2>Об игре Wuthering Waves</h2>
+
+            <!-- FIGURE + FIGCAPTION (изображение с подписью) -->
+            <figure>
+                <video width="320" height="240" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+                <figcaption>Представление Резонатора | Чиса</figcaption>
+            </figure>
+            <p><mark>Wuthering Waves</mark> — бесплатный action/RPG с открытым миром от Kuro Games, выпущенный в 2024 году. Игрок управляет амнезийным Ровером (главный персонаж; имеет мужскую и женскую версию для удобства игроков), исследующим постапокалиптический мир, сражаясь с монстрами (Тихими диссонансами) с помощью Резонаторов. Игра делает акцент на динамичной боевой системе, исследованиях и гача-механиках. </p>
+        </section>
+
+        <!-- Секция с новостями (ARTICLE, TIME, MARK) -->
+        <section id="news">
+            <h2>Последние новости</h2>
+            <article>
+                <video width="320" height="240" controls>
+                    <source src="videoo.mp4" type="video/mp4">
+                </video>
+                <h3>Реклама от Kuro Games</h3>
+                <p><time datetime="2026-02-25">25 февраля 2026</time> — <mark>представлена реклама в Китае</mark> в преддверии новой версии.</p>
+                <p>Подробности обновления уже на <a href="https://wutheringwaves.kurogames.com/en/main/#main">официальном сайте</a>.</p>
+            </article>
+            <article>
+                <h3>Ивент «Волны призыва»</h3>
+                <p><time datetime="2026-03-20">20 марта 2026</time> — стартовал временный ивент с <mark>увеличенным шансом дропа</mark> редких ресурсов. Участвуйте до конца месяца!</p>
+            </article>
+        </section>
+
+        <!-- Секция с персонажами (DETAILS + SUMMARY) -->
+        <section id="characters">
+            <h2>Популярные персонажи</h2>
+            <details>
+                <summary>Ян (Yang) — проводник стихий</summary>
+                <p>Ян использует анемо-способности для контроля толпы. Его ультимативная атака создаёт вихрь, который стягивает врагов. <mark>Совет: прокачайте мастерство стихий для максимума урона.</mark></p>
+            </details>
+            <details>
+                <summary>Лин (Lin) — танк поддержки</summary>
+                <p>Лин обладает щитами и баффами для команды. Её эхо-скилл восстанавливает здоровье союзникам. Впервые появилась в версии <time datetime="2025-01">января 2025</time>.</p>
+            </details>
+            <details>
+                <summary>Шэдоу (Shadow) — скрытный убийца</summary>
+                <p>Специализируется на быстрых атаках из тени. Крит-урон — основная характеристика. Идеален для охоты на элитных мобов.</p>
+            </details>
+        </section>
+    </main>
+
+    <!-- ASIDE (боковая панель) — дополнительный контент -->
+    <aside>
+        <h3>Интересные факты</h3>
+        <p><mark>Дата первого анонса:</mark> <time datetime="2022-05">май 2022</time>. Игра вышла в <time datetime="2024-05">мае 2024</time>.</p>
+        <p>В мире Wuthering Waves существует <mark>6 основных фракций</mark>, каждая со своей историей.</p>
+        <p>Исходя из информации от инсайдеров, следующий апдейт добавит <mark>кооперативные рейды</mark> на 8 игроков.</p>
+        <details>
+            <summary>Секретный код</summary>
+            <p>Используйте промокод <mark>WUTHERING2026</mark> для получения 100 астритов (до <time datetime="2025-04-01">1 апреля 2026</time>).</p>
+        </details>
+    </aside>
+
+    <!-- FOOTER (подвал) -->
+    <footer>
+        <p>© 2026 Wuthering Waves Fan-портал. Все права вымышлены.</p>
+    </footer>
+
+</body>
+</html>
